@@ -4,6 +4,7 @@ import java.io.IOException;
 
 import okhttp3.Headers;
 import okhttp3.Interceptor;
+import okhttp3.MediaType;
 import okhttp3.Request;
 import okhttp3.RequestBody;
 import okhttp3.Response;
@@ -44,8 +45,13 @@ public class CurlHttpLoggingInterceptor implements Interceptor {
         String bodyString = "";
         String contentType = "";
         if (request.body() != null) {
-            bodyString = parseRequestBody(request.body());
-            contentType = request.body().contentType().toString();
+            String body = parseRequestBody(request.body());
+            if (bodyString != "") {
+                bodyString = "-d '" + body + "' \\\n";
+            }
+            MediaType type = request.body().contentType();
+            contentType = "-H Content-Type: " + type.type() + "/" + type.subtype() +  " \\\n";
+
         }
         Headers headers = request.headers();
         StringBuilder result = new StringBuilder();
@@ -54,10 +60,10 @@ public class CurlHttpLoggingInterceptor implements Interceptor {
         }
         String headersString = result.toString();
         logger.log("curl  -X " + method + " \\\n " +
-                " -H '" + contentType +"'" + " \\\n '" +
+                contentType +
                 headersString +
-                " -d '" + bodyString + "' \\\n" +
-                url+ "'\n");
+                bodyString +
+                "'" + url + "'\n");
 
         return chain.proceed(request);
     }
