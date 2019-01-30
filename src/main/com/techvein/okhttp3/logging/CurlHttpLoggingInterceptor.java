@@ -1,7 +1,5 @@
 package com.techvein.okhttp3.logging;
 
-package okhttp3.logging;
-
 import java.io.IOException;
 
 import okhttp3.Headers;
@@ -14,20 +12,20 @@ import okio.Buffer;
 
 import static okhttp3.internal.platform.Platform.INFO;
 
-public class CurHttplLoggingInterceptor implements Interceptor {
+public class CurlHttpLoggingInterceptor implements Interceptor {
 
     public interface Logger {
         void log(String message);
 
-        /** A {@link HttpLoggingInterceptor.Logger} defaults output appropriate for the current platform. */
-        CurHttplLoggingInterceptor.Logger DEFAULT = message -> Platform.get().log(INFO, message, null);
+        /** A {@link CurlHttpLoggingInterceptor.Logger} defaults output appropriate for the current platform. */
+        CurlHttpLoggingInterceptor.Logger DEFAULT = message -> Platform.get().log(INFO, message, null);
     }
 
-    public CurHttplLoggingInterceptor() {
-        this(CurHttplLoggingInterceptor.Logger.DEFAULT);
+    public CurlHttpLoggingInterceptor() {
+        this(CurlHttpLoggingInterceptor.Logger.DEFAULT);
     }
 
-    public CurHttplLoggingInterceptor(CurHttplLoggingInterceptor.Logger logger) {
+    public CurlHttpLoggingInterceptor(CurlHttpLoggingInterceptor.Logger logger) {
         this.logger = logger;
     }
 
