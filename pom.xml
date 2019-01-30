@@ -19,7 +19,7 @@
     <name>OkHttp Logging Interceptor as CURL-command</name>
     <groupId>com.techvein</groupId>
     <artifactId>okhttp3.logging</artifactId>
-    <version>1.0.2</version>
+    <version>1.0.3</version>
     <packaging>jar</packaging>
 
     <description>Logging like curl command for OkHttp3</description>
