@@ -18,7 +18,12 @@ public class CurlHttpLoggingInterceptor implements Interceptor {
         void log(String message);
 
         /** A {@link CurlHttpLoggingInterceptor.Logger} defaults output appropriate for the current platform. */
-        CurlHttpLoggingInterceptor.Logger DEFAULT = message -> Platform.get().log(INFO, message, null);
+        CurlHttpLoggingInterceptor.Logger DEFAULT = new Logger() {
+            @Override
+            public void log(String message) {
+                Platform.get().log(INFO, message, null);
+            }
+        };
     }
 
     public CurlHttpLoggingInterceptor() {

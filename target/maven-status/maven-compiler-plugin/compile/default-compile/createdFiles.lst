@@ -1,2 +1,3 @@
 com/techvein/okhttp3/logging/CurlHttpLoggingInterceptor.class
+com/techvein/okhttp3/logging/CurlHttpLoggingInterceptor$Logger$1.class
 com/techvein/okhttp3/logging/CurlHttpLoggingInterceptor$Logger.class
