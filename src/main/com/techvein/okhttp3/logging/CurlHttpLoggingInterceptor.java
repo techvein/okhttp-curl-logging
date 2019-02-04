@@ -51,7 +51,9 @@ public class CurlHttpLoggingInterceptor implements Interceptor {
                 bodyString = "-d '" + body + "'";
             }
             MediaType type = request.body().contentType();
-            contentType = "-H Content-Type: '" + type.type() + "/" + type.subtype() + "'";
+            if (type != null) {
+                contentType = "-H Content-Type: '" + type + "'";
+            }
         }
         Headers headers = request.headers();
         StringBuilder headersBuilder = new StringBuilder();
