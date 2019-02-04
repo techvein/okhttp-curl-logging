@@ -58,7 +58,7 @@ public class CurlHttpLoggingInterceptor implements Interceptor {
         Headers headers = request.headers();
         StringBuilder headersBuilder = new StringBuilder();
         for (int i = 0, size = headers.size(); i < size; i++) {
-            headersBuilder.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i)  + "'");
+            headersBuilder.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i)  + "' \\");
         }
         String headersString = headersBuilder.toString();
 
