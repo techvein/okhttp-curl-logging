@@ -51,19 +51,21 @@ public class CurlHttpLoggingInterceptor implements Interceptor {
                 bodyString = "-d '" + body + "'";
             }
             MediaType type = request.body().contentType();
-            contentType = "-H Content-Type: '" + type.type() + "/" + type.subtype() + "'";
+            if (type != null) {
+                contentType = "-H Content-Type: '" + type + "'";
+            }
         }
         Headers headers = request.headers();
         StringBuilder headersBuilder = new StringBuilder();
         for (int i = 0, size = headers.size(); i < size; i++) {
-            headersBuilder.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i)  + "'");
+            headersBuilder.append(" -H '" + headers.name(i)).append(": ").append(headers.value(i)  + "' \\\n");
         }
         String headersString = headersBuilder.toString();
 
         logger.log("curl  -X " + method + " \\\n " +
-                (!contentType.equals("") ? contentType + "\\\n": "") +
-                (!headersString.equals("") ? headersString + "\\\n": "") +
-                (!bodyString.equals("") ? bodyString + "\\\n": "") +
+                (!contentType.equals("") ? contentType + " \\\n": "") +
+                headersString +
+                (!bodyString.equals("") ? bodyString + " \\\n": "") +
                 "'" + url + "'");
         return chain.proceed(request);
     }
