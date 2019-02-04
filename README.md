@@ -25,7 +25,7 @@ Add it your root build.gradle at the end of repositories:
 Then add the dependency
 ```
 	dependencies {
-	        implementation 'com.github.techvein:okhttp-curl-logging:1.0.3'
+	        implementation 'com.github.techvein:okhttp-curl-logging:1.0.4'
 	}
 ```
 
