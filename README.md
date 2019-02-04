@@ -49,3 +49,7 @@ val httpClient = HttpClient(OkHttp) {
 }
 ```
 
+and you will see a curl log on Logcat, then you can copy the log. 
+
+![image](https://user-images.githubusercontent.com/1450486/52203044-852bad80-28b3-11e9-88e0-4d809377a06c.png) 
+
