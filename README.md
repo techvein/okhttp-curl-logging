@@ -30,9 +30,22 @@ Then add the dependency
 ```
 
 ### Usage:
+
+- with OkHttpClient
+
 ```
     private val okHttpClient = OkHttpClient.Builder()
         .addNetworkInterceptor(CurlHttpLoggingInterceptor()) // Add this line.
         .build()
+```
+
+- with Ktor
+
+```
+val httpClient = HttpClient(OkHttp) {
+    engine {
+        addNetworkInterceptor(CurlHttpLoggingInterceptor()) // Add this line.
+    }
+}
 ```
 
