@@ -15,18 +15,18 @@ Logs network request as CURL command:
 ## Installation
 Add it your root build.gradle at the end of repositories:
 ```
-	allprojects {
-		repositories {
-			...
-			maven { url 'https://jitpack.io' }
-		}
-	}
+allprojects {
+    repositories {
+        ...
+        maven { url 'https://jitpack.io' }
+    }
+}
 ```
 Then add the dependency
 ```
-	dependencies {
-	        implementation 'com.github.techvein:okhttp-curl-logging:1.0.4'
-	}
+dependencies {
+    implementation 'com.github.techvein:okhttp-curl-logging:1.0.4'
+}
 ```
 
 ### Usage:
@@ -34,9 +34,9 @@ Then add the dependency
 - with OkHttpClient
 
 ```
-    private val okHttpClient = OkHttpClient.Builder()
-        .addNetworkInterceptor(CurlHttpLoggingInterceptor()) // Add this line.
-        .build()
+private val okHttpClient = OkHttpClient.Builder()
+    .addNetworkInterceptor(CurlHttpLoggingInterceptor()) // Add this line.
+    .build()
 ```
 
 - with Ktor
