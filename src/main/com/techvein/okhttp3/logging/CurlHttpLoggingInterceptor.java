@@ -64,7 +64,7 @@ public class CurlHttpLoggingInterceptor implements Interceptor {
 
         logger.log("curl  -X " + method + " \\\n " +
                 (!contentType.equals("") ? contentType + " \\\n": "") +
-                (!headersString.equals("") ? headersString : "") +
+                headersString +
                 (!bodyString.equals("") ? bodyString + " \\\n": "") +
                 "'" + url + "'");
         return chain.proceed(request);
